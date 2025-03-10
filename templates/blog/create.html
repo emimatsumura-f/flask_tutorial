@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+<!-- 'base.html' を継承 -->
+
+{% block header %}
+    <h1>{% block title %}New Post{% endblock %}</h1>
+    <!-- ヘッダー部分にタイトルを表示 -->
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <!-- フォームの開始、POSTメソッドを使用 -->
+        <label for="title">Title</label>
+        <!-- タイトルのラベル -->
+        <input name="title" id="title" value="{{ request.form['title'] }}" required>
+        <!-- タイトルの入力フィールド、必須項目 -->
+        <label for="body">Body</label>
+        <!-- 本文のラベル -->
+        <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
+        <!-- 本文のテキストエリア -->
+        <input type="submit" value="Save">
+        <!-- 送信ボタン -->
+    </form>
+{% endblock %}

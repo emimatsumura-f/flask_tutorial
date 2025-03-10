@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+<!-- 'base.html' というテンプレートを使います -->
+
+{% block header %}
+    <!-- ヘッダーの部分を定義します -->
+    <h1>{% block title %}Log In{% endblock %}</h1>
+    <!-- タイトルを 'Log In' にします -->
+{% endblock %}
+
+{% block content %}
+    <!-- コンテンツの部分を定義します -->
+    <form method="post">
+        <!-- フォームを作ります。データを送る方法は 'post' です -->
+        <label for="username">Username</label>
+        <!-- ユーザー名のラベル -->
+        <input name="username" id="username" required>
+        <!-- ユーザー名を入力するボックス。必須項目です -->
+        <label for="password">Password</label>
+        <!-- パスワードのラベル -->
+        <input type="password" name="password" id="password" required>
+        <!-- パスワードを入力するボックス。必須項目です -->
+        <input type="submit" value="Log In">
+        <!-- 送信ボタン。クリックするとログインします -->
+    </form>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+<!-- base.htmlを継承 -->
+
+{% block header %}
+    <h1>{% block title %}Edit "{{ post['title'] }}"{% endblock %}</h1>
+    <!-- ヘッダー部分に投稿のタイトルを表示 -->
+{% endblock %}
+
+{% block content %}
+    <form method="post"></form>
+        <!-- 投稿を更新するためのフォーム -->
+        <label for="title">Title</label>
+        <input name="title" id="title"
+            value="{{ request.form['title'] or post['title'] }}" required>
+        <!-- タイトル入力欄。フォームのデータがあればそれを表示し、なければ既存のタイトルを表示 -->
+        <label for="body">Body</label>
+        <textarea name="body" id="body">{{ request.form['body'] or post['body'] }}</textarea>
+        <!-- 本文入力欄。フォームのデータがあればそれを表示し、なければ既存の本文を表示 -->
+        <input type="submit" value="Save">
+        <!-- 保存ボタン -->
+    </form>
+    <hr>
+    <form action="{{ url_for('blog.delete', id=post['id']) }}" method="post">
+        <!-- 投稿を削除するためのフォーム -->
+        <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+        <!-- 削除ボタン。クリック時に確認ダイアログを表示 -->
+    </form>
+{% endblock %}
